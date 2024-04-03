@@ -72,6 +72,18 @@ plot = sns.stripplot(data=df_teams, x='Region', y='W%', hue='League', dodge=True
 plt.title('W% by League and Region, 2004-2023')
 plt.show()
 
+plot = sns.violinplot(data=df_teams, x='League', y='skill', palette='deep')
+plt.title('Pythagorean W% by League, 2004-2023')
+plt.ylabel('Pythagorean W%')
+plt.show()
+print(f"Mean skill AL: {df_teams.loc[df_teams['League'] == 'AL', 'skill'].mean()}, sd: {df_teams.loc[df_teams['League'] == 'AL', 'skill'].std()}, {df_teams.loc[df_teams['League'] == 'AL', 'skill'].__len__()}")
+print(f"Mean skill NL: {df_teams.loc[df_teams['League'] == 'NL', 'skill'].mean()}, sd: {df_teams.loc[df_teams['League'] == 'NL', 'skill'].std()}, {df_teams.loc[df_teams['League'] == 'NL', 'skill'].__len__()}")
+
+# now, do strip plot to get breakdown by region
+plot = sns.stripplot(data=df_teams, x='Region', y='skill', hue='League', dodge=True, order=['East', 'Central', 'West'], palette='deep')
+plt.title('Pythagorean W% by League and Region, 2004-2023')
+plt.show()
+
 plot = sns.violinplot(data=df_teams, x='League', y='RS/G', palette='deep')
 plt.title('Runs Scored per Game by League, 2004-2023')
 plt.ylabel('RS/G')
